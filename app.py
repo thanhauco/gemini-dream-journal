@@ -22,4 +22,8 @@ if st.button("Interpret"):
     if not api_key:
         st.warning("Please configure your API key.")
     else:
-        st.info("Interpretation feature coming soon!")
+        
+        with st.spinner("Interpreting your dream..."):
+            response = model.generate_content(f"Interpret this dream: {dream_input}")
+            st.write(response.text)
+
