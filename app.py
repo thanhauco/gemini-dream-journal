@@ -14,6 +14,9 @@ else:
     st.error("GEMINI_API_KEY not found in environment variables.")
 
 st.title("Gemini Dream Journal 🌙")
+
+style = st.selectbox("Interpretation Style", ["Psychological", "Spiritual", "Creative", "Freudian", "Jungian"])
+
 st.write("Record your dreams and let AI interpret them.")
 
 dream_input = st.text_area("Describe your dream:", height=150)
@@ -24,6 +27,6 @@ if st.button("Interpret"):
     else:
         
         with st.spinner("Interpreting your dream..."):
-            response = model.generate_content(f"Interpret this dream: {dream_input}")
+            response = model.generate_content(f"Interpret this dream using a {style} perspective: {dream_input}")
             st.write(response.text)
 
