@@ -19,7 +19,14 @@ style = st.selectbox("Interpretation Style", ["Psychological", "Spiritual", "Cre
 
 st.write("Record your dreams and let AI interpret them.")
 
-dream_input = st.text_area("Describe your dream:", height=150)
+col1, col2 = st.columns([2, 1])
+with col1:
+    dream_input = st.text_area("Describe your dream:", height=150)
+with col2:
+    st.write("### Tips")
+    st.write("- Be specific about colors and emotions.")
+    st.write("- Mention recurring symbols.")
+
 
 if st.button("Interpret"):
     if not api_key:
