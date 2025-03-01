@@ -5,6 +5,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+if "history" not in st.session_state:
+    st.session_state.history = []
+
+with st.sidebar:
+    st.header("Dream History")
+    for i, entry in enumerate(st.session_state.history):
+        st.write(f"Dream {i+1}: {entry['dream'][:20]}...")
+
+
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
@@ -36,4 +45,6 @@ if st.button("Interpret"):
         with st.spinner("Interpreting your dream..."):
             response = model.generate_content(f"Interpret this dream using a {style} perspective: {dream_input}")
             st.write(response.text)
+            st.session_state.history.append({"dream": dream_input, "interpretation": response.text})
+
 
