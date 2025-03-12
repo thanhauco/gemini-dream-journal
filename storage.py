@@ -13,4 +13,4 @@ def save_dream(dream, interpretation):
     dreams = load_dreams()
     dreams.append({"dream": dream, "interpretation": interpretation})
     with open(FILE_PATH, "w") as f:
-        json.dump(dreams, f, indent=4)
+        json.dump(dreams, f, indent=4, ensure_ascii=False)
