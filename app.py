@@ -1,3 +1,4 @@
+import utils
 import storage
 import streamlit as st
 import os
@@ -18,8 +19,8 @@ with st.sidebar:
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-pro')
+    # Config moved to utils
+    model = utils.get_model()
 else:
     st.error("GEMINI_API_KEY not found in environment variables.")
 
