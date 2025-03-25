@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 import os
 
@@ -11,6 +12,6 @@ def load_dreams():
 
 def save_dream(dream, interpretation):
     dreams = load_dreams()
-    dreams.append({"dream": dream, "interpretation": interpretation})
+    dreams.append({"dream": dream, "interpretation": interpretation, "date": datetime.now().strftime("%Y-%m-%d %H:%M")})
     with open(FILE_PATH, "w") as f:
         json.dump(dreams, f, indent=4, ensure_ascii=False)
