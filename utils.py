@@ -9,7 +9,7 @@ def get_model():
     return None
 
 def interpret_dream(model, dream, style):
-    return model.generate_content(f"Interpret this dream using a {style} perspective: {dream}").text
+    return model.generate_content(f"You are a wise dream interpreter. Analyze this dream deeply using a {style} perspective: {dream}").text
 
 def generate_visual_prompt(model, dream):
     return model.generate_content(f"Create a stable diffusion prompt to visualize this dream: {dream}").text
