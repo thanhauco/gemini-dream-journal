@@ -33,6 +33,10 @@ st.write("Record your dreams and let AI interpret them.")
 col1, col2 = st.columns([2, 1])
 with col1:
     dream_input = st.text_area("Describe your dream:", height=150)
+if st.button("Random Example"):
+    dream_input = "I was flying over a city made of crystal..."
+    st.experimental_rerun()
+
 with col2:
     st.write("### Tips")
     st.write("- Be specific about colors and emotions.")
