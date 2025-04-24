@@ -24,7 +24,12 @@ if api_key:
 else:
     st.error("GEMINI_API_KEY not found in environment variables.")
 
-st.title("Gemini Dream Journal 🌙")
+st.title
+with st.sidebar:
+    if st.button("Export Dreams"):
+        with open("dreams.json", "r") as f:
+            st.download_button("Download JSON", f, "dreams.json")
+("Gemini Dream Journal 🌙")
 
 style = st.selectbox("Interpretation Style", ["Psychological", "Spiritual", "Creative", "Freudian", "Jungian"])
 
