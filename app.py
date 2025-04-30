@@ -29,7 +29,7 @@ with st.sidebar:
     if st.button("Export Dreams"):
         with open("dreams.json", "r") as f:
             st.download_button("Download JSON", f, "dreams.json")
-("Gemini Dream Journal 🌙")
+("Gemini Dream Journal v1.0 🌙")
 
 style = st.selectbox("Interpretation Style", ["Psychological", "Spiritual", "Creative", "Freudian", "Jungian"])
 
