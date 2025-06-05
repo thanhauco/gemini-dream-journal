@@ -21,3 +21,9 @@ def generate_visual_prompt(model, dream):
     except Exception as e:
         return f"Error: {str(e)}"
 
+
+def analyze_sentiment(model, dream):
+    try:
+        return model.generate_content(f"Analyze the sentiment of this dream (Positive, Negative, or Neutral) and provide a brief explanation: {dream}").text
+    except Exception as e:
+        return f"Error: {str(e)}"

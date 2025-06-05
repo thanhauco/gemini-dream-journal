@@ -57,10 +57,15 @@ if st.button("Interpret"):
             response = model.generate_content(f"Interpret this dream using a {style} perspective: {dream_input}")
             st.write(response.text)
             
-            st.subheader("Visual Prompt")
+            
+            st.subheader("Sentiment Analysis")
+            sentiment = utils.analyze_sentiment(model, dream_input)
+            st.write(sentiment)
+            
+st.subheader("Visual Prompt")
             visual_prompt = model.generate_content(f"Create a stable diffusion prompt to visualize this dream: {dream_input}").text
             st.code(visual_prompt)
 
-            storage.load_dreams().append({"dream": dream_input, "interpretation": response.text})
+            storage.load_dreams().append({"dream": dream_input, "interpretation": response.text, "sentiment": sentiment})
 
 
