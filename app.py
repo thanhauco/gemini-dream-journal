@@ -12,7 +12,12 @@ load_dotenv()
 
 with st.sidebar:
     st.header("Dream History")
-    for i, entry in enumerate(storage.load_dreams()):
+    search_query = st.text_input("Search dreams...")
+    history = storage.load_dreams()
+    if search_query:
+        history = [d for d in history if search_query.lower() in d.get('dream', '').lower() or search_query.lower() in d.get('tags', '').lower()]
+
+    for i, entry in enumerate(history):
         st.write(f"Dream {i+1}: {entry['dream'][:20]}...")
 
 
