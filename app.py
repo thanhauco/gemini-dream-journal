@@ -63,16 +63,16 @@ if st.button("Interpret"):
             st.write(response.text)
             
             
-            st.subheader("Sentiment Analysis")
+            with st.expander("Sentiment Analysis"):
             sentiment = utils.analyze_sentiment(model, dream_input)
             st.write(sentiment)
             
 
-            st.subheader("Keywords")
+            with st.expander("Keywords"):
             keywords = utils.extract_keywords(model, dream_input)
             st.write(keywords)
             
-st.subheader("Visual Prompt")
+with st.expander("Visual Prompt"):
             visual_prompt = model.generate_content(f"Create a stable diffusion prompt to visualize this dream: {dream_input}").text
             st.code(visual_prompt)
 
